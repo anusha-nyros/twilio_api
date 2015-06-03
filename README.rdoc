@@ -5,8 +5,6 @@ Twilio API into  a Rails Application .
 
 First install gem in Gemfile:
 
-  Gemfile:
-
       gem 'twilio-ruby'
 
 and then 
