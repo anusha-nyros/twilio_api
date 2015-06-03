@@ -1,0 +1,7 @@
+<%= simple_form_for(@user, :url => final_verification_path, method: "post") do |f| %>
+    <%= f.input :otp, label: "Enter OTP", :input_html => {:value => "", :maxlength =>10,:style=> 'width: 50%'} %>
+    <%= f.input :phone, as: :hidden, label: "PhoneNumber" %>
+    <div class="form-action">
+        <%= f.submit "Submit", class: "btn btn-primary btn-mini" %>
+    </div>
+<% end %>

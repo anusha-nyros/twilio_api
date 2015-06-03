@@ -1,0 +1,31 @@
+<div class="container">
+
+<h1>Listing Messages</h1>
+<% if !@messages.blank? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>To</th>
+      <th>Body</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.mob_num %></td>
+        <td><%= message.body %></td>
+        <td><%= message.user_id %></td>
+        <td><%= link_to 'Show', message, class: "btn btn-primary" %>
+        <%= link_to 'Destroy', message, method: "delete", class: "btn btn-danger", confirm: "Are you Sure?" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+    <div><center>No Messages To Display</center></div>
+<% end %>
+</div>

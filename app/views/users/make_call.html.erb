@@ -1,0 +1,12 @@
+    <%= simple_form_for('user', :url => create_call_path, method: "post") do |f| %>
+        <%#= f.input :phone, label: "Phone", :input_html => {:maxlength =>20,:style=> 'width: 50%'} %>
+        <div class="input-prepend">
+          <span class="add-on"><%= f.select :code, @countries.all.map {|p| [p.name, p.code]} %></span>
+          <%= f.input :phone, label: "Phone", :input_html => {:maxlength =>20,:style=> 'width: 50%'} %>
+        </div>
+        <div class="form-action">
+            <%= f.submit "Submit", class: "btn btn-primary btn-mini" %>
+        </div>
+    <% end %>    
+    
+    

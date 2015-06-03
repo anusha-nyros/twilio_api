@@ -1,0 +1,80 @@
+<div class="container">
+<h1>Listing Users</h1>
+<%#= link_to 'New User', new_user_path, class: "btn btn-mini btn-primary" %>
+<br/>
+<br/>
+<br/>
+<% if !@users.blank? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= link_to 'Show', user, class: "btn btn-min btn-success" %>
+         <%# if current_user.id == user.id %>
+             <%= link_to 'Edit', edit_user_path(user), class: "btn btn-mini btn-primary" %>
+             <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+             <% #if user.verified == false %>
+               <%#= link_to "Verify Mobile", "#hello", id: "#{user.id}", class: "btn btn-warning btn-mini fancybox verify", data: {fancybox_width: 350} %>
+             <%# else %>
+               <%#= link_to "Send SMS", "#hello", id: "#{user.id}", class: "btn btn-success btn-mini fancybox sendsms", data: {fancybox_width: 350} %>
+             <% #end %>
+          <%# end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+    <div>No Users were added.</div>
+<% end %>
+</div>
+<script>
+    $(document).ready(function(){
+        $(".verify").click(function(){
+            var userid = $(this).attr("id")
+            $.ajax({
+                  url: "/verify_mobile",
+                  data: {id: userid},
+                  success: function(data){
+                      $("#hello").html(data);
+                    }
+            })
+        })
+/*        
+        $(".sendsms").click(function(){
+            var userid = $(this).attr("id")
+            $.ajax({
+                  url: "/messages/new",
+                  data: {id: userid},
+                  success: function(data){
+                      $("#hello").html(data);
+                    }
+            })
+        })
+        
+        $(".makecall").click(function(){
+            var userid = $(this).attr("id")
+            $.ajax({
+                  url: "/make_call",
+                  type: "POST",
+                  data: {id: userid},
+                  success: function(data){
+                      $("#hello").html(data);
+                  }
+            })
+        })*/
+        
+    })
+</script>

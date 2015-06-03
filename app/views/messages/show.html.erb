@@ -1,0 +1,18 @@
+<div class="container">
+
+<p>
+  <strong>Sent To:</strong>
+  <%= @message.mob_num %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= @message.body %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= User.find(@message.user_id).phone %>
+</p>
+
+<%= link_to 'Back', messages_path, class: "btn btn-info" %>
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twilio API</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+    <script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+       
+
+</head>
+<body>
+ <%= render 'layouts/navigation' %>
+
+
+ <div id="notifications">
+            <% [:error, :notice, :alert].each do |type| %>
+              <% if flash[type] %>
+                <%= content_tag :div, class: "alert #{alert_class(type)}" do %>
+                <a class="close" data-dismiss="alert">x</a>
+                <%= flash[type] %>
+                <% end %>
+              <% end %>
+            <% end %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

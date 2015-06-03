@@ -1,0 +1,51 @@
+<%= nav_bar brand: "Twilio API", responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", login_path %>
+        <%= menu_divider %>
+        <%# if current_user %>
+        <%= menu_item "Users", users_path %>
+        <%= menu_item "Messages", messages_path  %>
+        <%= menu_item "Make a Call", "#hello", class: "makecall fancybox", data: {fancybox_width: 350}  %>
+        <%= menu_item "Send SMS", "#hello", class: "sendsms fancybox", data: {fancybox_width: 350} %>
+        <%= menu_item "Customer Support", "#hello", class: "makeivr fancybox", data: {fancybox_width: 350} %>
+        <%= menu_item "Connect Apps", connect_twilio_path %>
+        <%= menu_item "Call", twilio_client_path %>   
+        <%= menu_item "Bulk SMS", bulk_sms_path %>     
+        <%# end %>
+    <% end %>
+<% end %>
+
+  <div id="hello"></div>
+    <script>
+         $(".sendsms").click(function(){
+            $.ajax({
+                  url: "/messages/new",
+                  data: {id: ""},
+                  success: function(data){
+                      $("#hello").html(data);
+                    }
+            })
+        })
+        
+          $(".makecall").click(function(){
+            $.ajax({
+                  url: "/make_call",
+                  type: "POST",
+                  data: {id: ""},
+                  success: function(data){
+                      $("#hello").html(data);
+                  }
+            })
+        })
+        
+          $(".makeivr").click(function(){
+            $.ajax({
+                  url: "/make_an_ivr",
+                  type: "POST",
+                  data: {id: ""},
+                  success: function(data){
+                      $("#hello").html(data);
+                  }
+            })
+        })
+</script>

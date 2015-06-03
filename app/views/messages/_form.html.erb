@@ -1,0 +1,9 @@
+<div class="container">
+<%= simple_form_for(@message) do |f| %>
+  <%= f.error_notification %>
+    <%= f.select :code, @countries.all.map {|p| [p.name, p.code]} %>
+    <%= f.input :mob_num, label: "To: ", input_html: {:maxlength =>20,style: "width:20%"} %>
+    <%= f.input :body, label: "Message: ", input_html: {style: "width:20%"} %>
+    <%= f.button :submit, label: "Send" %>
+<% end %>
+</div>

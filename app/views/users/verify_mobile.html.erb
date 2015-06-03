@@ -1,0 +1,6 @@
+    <%= simple_form_for(@user, :url => mobile_verification_path, method: "post", remote: true) do |f| %>
+        <%= f.input :phone, label: "Phone", :input_html => {:maxlength =>20,:style=> 'width: 50%'} %>
+        <div class="form-action">
+            <%= f.submit "Submit", class: "btn btn-primary btn-mini" %>
+        </div>
+    <% end %>    
