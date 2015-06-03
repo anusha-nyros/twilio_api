@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
     end
     
     def self.send_verification_code(client, phone, otp)
-        otp = otp
         client.account.messages.create(:from => TWILIO_CONFIG["from"], :to => phone, :body => "Please enter this OTP (#{otp})")
     end
 end
