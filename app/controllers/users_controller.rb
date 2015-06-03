@@ -258,10 +258,10 @@ class UsersController < ApplicationController
         @arr.each do |arr|
             begin
                 @client.account.messages.create(:from => TWILIO_CONFIG["from"], :to => arr[1], :body => "Hello #{arr[0]}")
-                redirect_to users_path, notice: "Bulk SMS Succeded"
             rescue Exception => e
-                redirect_to users_path, error: "Something Went Wrong: #{e.message.inspect}"
+                puts "#{e.message.inspect}"
             end
+            redirect_to users_path, notice: "Bulk SMS Succeded"
         end
         
   end

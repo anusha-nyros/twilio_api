@@ -15,7 +15,7 @@ Get AccountID, Auth Token  and a twilio number from Twilio Account and use them 
 
 For example:
 
-      client = Twilio::REST::Client.new(AccountSid, AuthToken)
+     client = Twilio::REST::Client.new(AccountSid, AuthToken)
 
 Use your Twilio number to send and recieve messages and calls etc.,
 
