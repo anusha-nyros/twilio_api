@@ -5,46 +5,47 @@ Twilio API into  a Rails Application .
 
 First install gem in Gemfile:
 
-Gemfile:
-
-gem 'twilio-ruby'
-
+  _Gemfile:_
+    ```
+      gem 'twilio-ruby'
+    ```
 and then 
-
-bundle install
-
-Get AccountID, Auth Token  and a twilio number from Twilio Account and use them in your application.
+    ```
+      bundle install
+    ```
+Get `AccountID`, `Auth Token`  and a `twilio number` from Twilio Account and use them in your application.
 
 For example:
-
+    ```
       client = Twilio::REST::Client.new(AccountSid, AuthToken)
-      
-Use your Twilio number to send and recieve messages and calls etc.,
+    ```  
+Use your `Twilio number` to send and recieve messages and calls etc.,
 
 For example you can send messages to any other numbers like this:
-
+    ```
      client.account.messages.create(:from => "TwilioNumber",
                                     :to => "Your desired Number",
                                     :body => "Some text you want to send")
+    ```
+You can get more details about the usage of Twilio here: [Twilio Api](https://www.twilio.com/docs)
 
-You can get more details about the usage of Twilio here: https://www.twilio.com/docs
-
-You can get more information about twilio-ruby gem here: https://github.com/twilio/twilio-ruby
+You can get more information about twilio-ruby gem here: [twilio-ruby](https://github.com/twilio/twilio-ruby)
 
 You can clone this app and verify supported features of twilio API in rails application.
+    ```
 
-git clone https://github.com/anusha-nyros/twilio_api.git
+     git clone https://github.com/anusha-nyros/twilio_api.git
 
-bundle install
+     bundle install
 
-create new database.yml file and use your database credentials.
+     create new  `database.yml` file and use your database credentials.
 
-create new twilio.yml file(config/twilio.yml) and place your twilio credentials in that file.
+     create new `twilio.yml` file(config/twilio.yml) and place your twilio credentials in that file.
 
-create new secrets.yml file and get the secret tokens by executing this command: rake secrets
+     create new  `secrets.yml` file and get the secret tokens by executing this command: rake secrets
 
-rake db:migrate
+     rake db:migrate
 
-start your server rails s and enjoy the taste of Twilio API.
+     start your server `rails s` and enjoy the taste of Twilio API.
 
-
+    ```
